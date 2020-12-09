@@ -15,9 +15,7 @@ class IngresoModel extends Model{
         $data = file_get_contents("php://input");
         $result = json_decode($data, true);
         if(isset($result['usuario']) && isset($result['clave'])){
-            //Recibimos el usuario
             $user = $result['usuario'];
-            //Recibimios la clave
             $pass = $result['clave'];
             $sql = "SELECT * FROM ingreso WHERE rut = $user AND cadena = '$pass';";
             $exists = $this->db->execute($sql);
